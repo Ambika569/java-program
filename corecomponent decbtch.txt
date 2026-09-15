@@ -1,0 +1,28 @@
+Core Components:- 
+
+OOTB
+
+1--> 
+/libs/foundation/components
+
+old components -->  JSP , Classic Dialog , WCM POJO 
+
+2--> /libs/wcm/foundation/components 
+
+--HTL , Classic/touch ui dialog ,WCM POJO 
+
+
+3 --> /libs/core/wcm/components  -> AEMaaCS
+
+/apps/core/wcm/components -- > AEM 6.5
+
+
+https://www.aemcomponents.dev/
+
+------------------------------------------------------------
+
+Style System 
+
+Step 1:- copy the cq:design_dialog from the path /libs/core/wcm/components/title/v3/title
+
+Step 2:- Components

@@ -1,0 +1,65 @@
+Maven:- Apache
+It is a build automation and project management tool for java projects.
+AEM is a java based platform.
+Maven is used to build, manage & deploy AEM projects Efficiently.
+
+VIP :- Mukesh Ambani 
+
+PA -- Personel Assistant
+
+Schedule the meeting
+Managing the work 
+Food
+Each and every thing. 
+
+
+Key reasons:-
+
+Project Structure :- Standard folder Structure. 
+
+ui.apps , ui.content, core 
+
+Dependency Management:- pom.xml file 
+
+MLA -- Java Project 
+PA -- Maven 
+Newsportal -- Guntur
+File:- POM.XML
+
+Municipal Details --> Pom.xml file 
+Revenue Details 
+Collectorate Details
+Electricity Department
+Police Department --> POm.xml 
+
+Build & Deploy:- 
+
+Commands:- 
+mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate -D archetypeGroupId=com.adobe.aem -D archetypeArtifactId=aem-project-archetype -D archetypeVersion=41 -D appTitle="Newsportal" -D appId="newsportal" -D groupId="com.karthik.newsportal"
+
+
+mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.2.1:generate -D archetypeGroupId=com.adobe.aem -D archetypeArtifactId=aem-project-archetype -D archetypeVersion=41 -D appTitle="Newsportal" -D appId="newsportal" -D groupId="com.karthik.newsportal"
+
+mvn clean install -PautoInstallSinglePackage
+mvn clean install -PautoInstallPackage
+mvn clean install -PautoInstallPackagePublish
+mvn clean install -PautoInstallBundle
+
+
+URL: 
+https://experienceleague.adobe.com/en/docs/experience-manager-learn/getting-started-wknd-tutorial-develop/project-archetype/project-setup
+
+
+Multi-Module Project:- 
+
+Plugin Support:- Tools like AEM-Plugins, Content -package-maven-plugin automate
+ AEM-Specific tasks (liek Installing, Package to aem)
+ 
+ newsportal
+ core --> all your java program are included 
+ ui.apps --> Component, dialog , templates 
+ ui.config --> configuration 
+ ui.content --> sample pages / content
+ all --> Build everything into a Single installed page.
+ pom.xml --> Root maven config 
+ 

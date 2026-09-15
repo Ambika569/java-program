@@ -1,0 +1,100 @@
+CMS:- Content Management System Tools 
+
+Create/manage content
+text assets {images/documents/videos}
+
+0-down time 
+default features like 
+Time
+Cost 
+
+Ex:- Apple, Samsung , Hyundai , KIA
+
+Tools:- WordPress, Joomla , Drupal, Sitecore, AEM , Contentful , OpenText etc...
+
+AEM  {Adobe Experinece Manager}:-
+
+Marketing Cloud:-
+
+Adobe Audience Manager -- Gemini 
+Adobe Campaign
+Adobe Social
+Adobe Primetime
+Adobe Experience Manager-- Jio Sim
+Adobe Analytics -- Jio Hotstar
+Adobe Target - jioaSavaan 
+
+AEM Modules:- 
+
+AEM Forms
+AEM Sites 
+AEM Mobile 
+AEM Assets 
+AEM Community
+
+
+AEM Versions:- 
+
+Day Software Sollutions
+C.Q1.0(2000)
+C.Q2.0
+C.Q3.0
+C.Q3.5
+C.Q4.0
+C.Q4.1
+C.Q5.0
+C.Q5.2
+C.Q5.3
+C.Q5.4(2011)
+Adobe 
+C.Q 5.5 (2012)
+A.E.M 5.6(2013)
+A.E.M5.6.1
+A.E.M6.0
+A.E.M6.1
+A.E.M6.2
+A.E.M6.3
+A.E.M6.4
+A.E.M6.5 (2019)
+AEMaaCS -- Adobe Experience Manager as a Cloud Service (2020)
+
+
+
+iphone 15 pro max
+ 10000
+ 
+ price :- 50000/-
+
+
+
+
+
+Java Full stack:-
+
+Pickles24/7.com
+
+--> CMS  --{Delloitte}
+--> Java Full Stack  -- {TCS}
+
+40 java backend Programmers/developers
+10 UI/UX
+5 -- TL
+5 - Testing 
+
+60 --> people total
+--> Pay 5cr
+
+
+10 CMS Developers 
+5 UI/UX team 
+3 TLs
+2 Testers 
+
+20 --> Total
+
+pay - 80lakhs per month  
+
+
+
+
+Why only AEM? 

@@ -1,0 +1,29 @@
+Experience Fragement:- XF 
+cq:Page
+/content/experience-fragement
+
+Page --> Content --> PAge Level
+Template --> Content --> Template Level Content 
+Experience Fragement --> Content --> 
+
+Example:- 
+
+Variations:- 
+Variation --> build it from the scratch 
+Variation as a live copy
+
+Original
+master copy
+1st copy 
+
+Phone Number 
+
+10 Templates 
+
+8 Templates --  Number 
+
+100 Pages -- Number  
+
+Page     -- You
+Template -- Dairy
+XF       -- Farmer

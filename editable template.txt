@@ -1,0 +1,40 @@
+Editable Templates:- 
+
+Static Template and Dynamic Templates
+
+karthik
+Template level -- 2 components 
+Header 
+
+
+
+
+Footer 
+
+Step1:- /apps/newsportal/components/page 
+singaporepage
+sling:resourceSuperType -->/libs/core/wcm/components/page/v3/page
+
+Step2:-/conf/newsportal/settings/wcm/templates-type/page
+
+You have duplicated the page and need to change the title in jcr:content
+-->initial-->jcr:content-->Sling:resourceType--> 
+-->Structure-->jcr:content-->Sling:resourceType--> 
+
+Step3:- localhost:4502/aem/start.html
+tools-->general-->templates-->newsportal-->create-->template-->select the template type
+
+Step4:- You need to enable it 
+
+Step5:- Try to add any few components 
+
+step6 :- create page using ur template 
+
+
+
+
+When you are editing the template:- Structure and Initial
+
+Structure --> 
+
+Initial --> 

@@ -1,0 +1,169 @@
+OSGI Configuration:- 
+
+@Reference -- OSGI annotation
+Test t;
+
+Sample Rest APIURL :- https://gorest.co.in/public/v2/posts
+
+---------------------------------------------------------
+@Component(immediate = true, service = Test.class)
+@Designate(ocd = Test2.class)
+public class Test{
+
+private static final Logger log = LoggerFactory.getLogger(Test.class); //import org.slf4j.Logger
+
+//import org.slf4j.LoggerFactory;
+
+@Activate
+public void active(){
+log.info("Test Class ---- Activated...");
+
+}
+
+private String articleRestUrl;
+
+@DeActivate
+public void deActive(){
+log.info("Test Class ---- DeActivated...");
+}
+
+
+public String getarticle() {
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		HttpGet Request = new HttpGet(articleRestUrl);
+		String result = null;
+		try {
+			CloseableHttpResponse response = httpclient.execute(Request);
+			HttpEntity entity = response.getEntity();
+			if(entity!=null) {
+				
+				result = EntityUtils.toString(entity);
+			}
+		}
+			catch(IOException e) {
+				e.printStackTrace();
+			}
+		
+		return result;
+		
+	} //Method bracket
+
+} //class bracket
+------------------------------------------------------
+public class Karthik{
+
+@Reference
+Test Saikumar;
+
+}
+----------------------------------------------------------
+
+OSGI R7 annotation
+
+@Component
+@Activate
+@DeActivate
+@Modified
+@ObjectClassDefinition :- 
+@AttributeDefinition :- 
+@Designate :- 
+
+-------------------------------------
+
+@ObjectClassDefinition
+public Interface Test2{
+@AttributeDefinition(name = "RestAPIURL", description = "REST API URL IS FOR SAMPLE")
+public String articleURL() default "https://gorest.co.in/public/v2/posts";
+
+
+
+}
+
+
+------------------
+
+Once you have deployed the code :- localhost:4502/system/concole/configMgr
+
+--Search the OSGI Component / Service 
+
+--> Create a file in osgiconfig/config/PID.cfg.json
+
+====================================================================
+
+package com.karthik.newsportal.core.services;
+
+import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+
+@ObjectClassDefinition
+public @interface AdithyaConfiguration {
+	
+	@AttributeDefinition(name = "Adithya URL Path", description ="This is a sample URL path" )
+	public String restAPIurl() default "https://gorest.co.in/public/v2/posts";
+
+}
+
+---------------------------------------------------------------------------------------------------
+
+package com.karthik.newsportal.core.services;
+
+import java.io.IOException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.metatype.annotations.Designate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Component(service = KarthikService.class ,immediate = true)
+@Designate(ocd = AdithyaConfiguration.class)
+public class KarthikService {
+	
+	private static final Logger Log = LoggerFactory.getLogger(KarthikService.class);
+	
+	private String articleRestUrl;
+	
+//	private Boolean status;
+	
+	@Activate
+	public void activate(AdithyaConfiguration config){
+		Log.info("KarthikService -- Inside the Activated Method");
+		this.articleRestUrl = config.restAPIurl();
+		
+	}
+	
+	@Modified
+	public void update(AdithyaConfiguration config){
+		Log.info("KarthikService -- Inside the update Method");
+		this.articleRestUrl = config.restAPIurl();
+		
+	}
+	
+	public String getarticle() {
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		HttpGet Request = new HttpGet(articleRestUrl);
+		String result = null;
+		try {
+			CloseableHttpResponse response = httpclient.execute(Request);
+			HttpEntity entity = response.getEntity();
+			if(entity!=null) {
+				
+				result = EntityUtils.toString(entity);
+			}
+		}
+			catch(IOException e) {
+				e.printStackTrace();
+			}
+		
+		return result;
+		
+	}
+
+}

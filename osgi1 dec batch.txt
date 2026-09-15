@@ -1,0 +1,53 @@
+OSGI :- Open Service Gateway Intiative 
+-->It is a modular based java framework to divide the entire module into multiple parts
+and develop these parts by multiple requirements. 
+
+1991 (osgi.org)
+Eclipse IDE
+VS code --> AEM Sync --> Extension 
+
+
+OSGI Layer :-
+
+Module Layer -- to manage the bundle
+Life cycle Layer -- 
+Security Layer -- Authentication/authorization
+Execution Layer -- 
+Service layer --
+
+
+Advantages:- 
+
+--> Fast ==> 
+--> Reduce Complexity ==>Entire application is divided into module and parallel development.
+-->Reuse ==>  
+-->Easy Deployment ==> 
+--> Dynamic updates ==> 
+
+====================================================
+
+--core 
+
+--> .jar
+
+---> localhost:4502/system/console/bundle
+
+What is bundle?
+
+Life cycle of the bundle?
+
+Installed
+Resolved --
+Starting{default} --
+Active
+stoping{default} --
+uninstalled -- 
+
+
+
+--mvn clean install -PautoInstallBundle
+
+OSGI
+Life cycle of Bundle
+jar vs Bundle
+jar vs contentpackage

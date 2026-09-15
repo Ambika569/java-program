@@ -1,0 +1,41 @@
+Sling Request processing:- 
+
+Request and response 
+
+https://insta.reels.funnyreels
+
+
+
+http://localhost:4502/editor.html/content/newsportal/us/en/july/page1.html
+
+Step 1:- 
+
+protocol: http / https
+host: localhost
+port: 4502
+Content path:/content/newsportal/us/en/july/page1
+selector: print 
+extension: html
+Method: GET
+
+Step 2:- Content path:/content/newsportal/us/en/july/page1
+
+404(ResourceNotFound)
+
+Step 3:- Get resource Tpye:
+
+jcr:content
+
+Step 4:- Script Location
+
+/libs/ or /apps/
+
+Step 5:- priority order
+
+1-->Selector + extension
+2--> selector
+3--> Extension
+4-->Method
+5-->Default(componentname.html)
+6-->ParentComponentScriptfile
+ 

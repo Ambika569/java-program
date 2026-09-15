@@ -1,0 +1,181 @@
+Sling Models:- 
+
+@Model(adaptables = {Resource.class , SlingHttpServletRequest.class},
+defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
+)
+public class SaikumarModel{
+
+@ValueMapValue(injectionStrategy = InjectionStrategy.REQUIRED)
+private String articleTitle;
+
+@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+private String articlehesc; //leave this injection 
+
+@ValueMapValue
+@Required
+private String readtime;
+
+
+}
+
+@ValueMapValue
+private String text;
+
+@ValueMapValue
+private String articleTitle;
+
+@ValueMapValue
+private String articleDesc;
+
+@ValueMapValue
+private String readtime;
+
+Date today = new Date();
+
+@PostConstruct
+public void karthik(){
+if(articleexpirydate != null  && articleexpirydate.CompareTo(today)<0 ){
+
+
+}
+
+}
+
+
+@Required & @Optional :- 
+
+defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
+
+
+@Named & @Default :-
+
+@ValueMapValue(name = "sling:resourceType")
+@Named
+@Default("/apps/newsportal/components/saikumar/cq:dialog/content/items/text")
+public string Ocean;
+
+@Exporter:- 
+
+@Exporter(extensions = ExporterConstants.SLING_MODEL_EXTENSION, 
+name = ExporterConstants.SLING_MODEL_EXPORTER_NAME)
+
+@Exporter(extensions = json , name = jackson)
+
+@OSGIService:- TO inject OSGI service into Sling model
+
+@Reference:- Inject one OSGI service into another OSGI Service
+
+@Self:- Inject one Sling model Into Another Sling Model
+
+@SlingObject:- 
+
+@ScriptVariable:- 
+
+
+@ChildResource:- 
+
+@ChildResource
+List<Resource> relatedarticle;
+
+--------------------------------------------------------------
+
+<div data-sly-use.karthik = "com.karthik.newsportal.core.models.saikumarModel">
+
+<h1>${karthik.articleTitle}</h1>
+
+================================================================================
+<div data-sly-use.karthik = "com.karthik.newsportal.core.models.saikumarModel"></div>
+<div data-sly-test = "${!karthik.articleexpiry}">
+<h1>karthik.articleTitle</h1>
+<h3>karthik.articleDesc</h3>
+<p>karthik.readtime</p>
+
+</div>
+=======================================================================================
+
+package com.karthik.newsportal.core.models;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+
+@Model(adaptables = {Resource.class, SlingHttpServletRequest.class},
+resourceType = "newsportal/components/article-detail",
+defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Exporter(extensions = "json" ,name = "jackson")
+public class ArticleDetailsModel {
+
+
+
+    @ValueMapValue
+    public String articleTitle;
+
+    @ValueMapValue
+    public String articleDesc;
+
+    @ValueMapValue
+    public String articleImage;
+
+    @ValueMapValue
+    public Date articleexpirydate;
+
+    public String getArticleTitle() {
+        return articleTitle;
+    }
+
+    public String getArticleDesc() {
+        return articleDesc;
+    }
+
+    public String getArticleImage() {
+        return articleImage;
+    }
+
+    public Date getArticleexpirydate() {
+        return articleexpirydate;
+    }
+    
+    private boolean articleExpired = false;
+
+    public boolean isArticleExpired() {
+		return articleExpired;
+	}
+    
+    
+    public List<RelatedArticleImpModel> getRelatedArticles() {
+		return relatedArticles;
+	}
+
+	
+	@ChildResource
+    List<RelatedArticleImpModel> relatedArticles;
+    
+	@PostConstruct
+    public void init() {
+    	Date today = new Date();
+    	if(articleexpirydate != null && articleexpirydate.compareTo(today)<0) {
+    		articleExpired = true;	
+    	}	
+    }  
+}
+
+==============================================================================
+<div data-sly-use.Karthik="com.karthik.newsportal.core.models.ArticleDetailsModel">
+
+	<h1>${Karthik.articleTitle}</h1>
+	<p>${Karthik.articleDesc}</p>
+	<img src="${Karthik.articleImage}"width="300" height="200" alt="${Karthik.articleTitle}" />
+	<h1>${'yyyy-MM-dd' @ format=articleexpirydate, type='date'}</h1>
+</div>
+<div data-sly-test = "${karthik.articleExpired}">
+<h1>This Article was Expired...</h1></div>

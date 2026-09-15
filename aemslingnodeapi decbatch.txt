@@ -1,0 +1,231 @@
+Sling Node API's:- 
+
+ResourceResolver
+Resource
+ValueMap
+ModifiableValueMap
+
+
+@SlingServletPaths(value ={});
+public class Test extends SlingAllMethodsServlet{
+
+public void doGet(SlingHttpServletRequest request,SlingHttpServletResponse response ) throws
+Servlet Exception, IO Exception"{
+ResourceResolver resolver = request.getResourceResolver();
+Resource userResource = resolver.getResource("/content/users");
+
+if(userResource != null){
+Iterator<Resource> childUserList = userResource.listChilder();
+JSONArrayBuilder userJsonList = JSON.createArrayBuilder();
+While(childUserList.hasNext()){
+Resource userChildResource = (Resource)childUserList.Next();
+ValueMap properties = userChildResource.getValueMap();
+String firstName = properties.get("firstName" , String.class);
+String lastName = properties.get("lastName" , String.class);
+String email = properties.get("email" , String.class);
+String phone = properties.get("phone" , String.class);
+JSONObjectBuilder  userJSON = JSON.createObjectBuilder();
+userJSON.add("FirstName" ,firstName );
+userJSON.add("LastName" ,lastName );
+userJSON.add("E-Mail" ,email );
+userJSON.add("Phone" ,phone );
+ userJsonList.add(userJSON);
+}//While Loop
+response.getWriter().write(userJsonList.build().toString());
+}//IF condition
+}/doGet Method
+
+
+public void doPost(SlingHttpServletRequest request,SlingHttpServletResponse response ) throws
+Servlet Exception, IO Exception"{
+ResourceResolver resolver = request.getResourceResolver();
+Resource userResource = resolver.getResource("/content/users");
+String userID = request.getParameter("userID");
+Map<String, Object> properties = new HashMap();
+properties.put("firstName" , request.getParameters("firstName"));
+properties.put("lastName" , request.getParameters("lastName"));
+properties.put("email" , request.getParameters("email"));
+properties.put("phone" , request.getParameters("phone"));
+resolver.create(userResource,userID, properties);
+resolver.commit();
+response.getWriter().write("USer Successfully created  " + userID);
+}
+
+
+public void doPut(SlingHttpServletRequest request,SlingHttpServletResponse response ) throws
+Servlet Exception, IO Exception"{
+String userID = request.getParameter("userID");
+ResourceResolver resolver = request.getResourceResolver();
+Resource userResource = resolver.getResource("/content/users" + userID);
+if(userResource != null ){
+ModifiableValueMap mprop = userResource.adaptTo(ModifiableValueMap.class);
+String firstName = request.getParameter("firstName");
+String lastName = request.getParameter("lastName");
+String email = request.getParameter("email");
+String phone = request.getParameter("phone");
+if(firstName != null){
+mprop.put("firstName" , firstName);
+}
+if(lastName != null){
+mprop.put("lastName" , lastName);
+}
+if(email != null){
+mprop.put("femail" , email);
+}
+if( phone != null){
+mprop.put("phone" ,  phone);
+}
+resolver.commit();
+}
+
+}
+
+
+public void doDelete(SlingHttpServletRequest request,SlingHttpServletResponse response ) throws
+Servlet Exception, IO Exception"{
+
+ResourceResolver resolver = request.getResourceResolver();
+Resource userResource = resolver.getResource("/content/users" + userID);
+resolver.delete(userResource);
+resolver.commit();
+
+}
+} 
+------------------------------------
+http://localhost:4502/bin/newsportal/recent/articleServlet?userID=sai
+http://localhost:4502/bin/newsportal/recent/articleServlet?userID=sai&email=saikumar333@gmail.com
+
+=======================================================================================================
+
+package com.karthik.newsportal.core.servlets;
+
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.*;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObjectBuilder;
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.ModifiableValueMap;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.apache.sling.servlets.annotations.SlingServletPaths;
+import org.osgi.service.component.annotations.Component;
+
+@Component(service = Servlet.class, immediate = true)
+@SlingServletPaths(value = { "/bin/newsportal/recent/articleServlet" })
+public class RecentArticleServlet  extends SlingAllMethodsServlet{
+	
+	@Override
+	protected void doGet(SlingHttpServletRequest request,SlingHttpServletResponse response)
+			throws ServletException, IOException {
+		
+		ResourceResolver resolver = request.getResourceResolver();
+        Resource userResource = resolver.getResource("/content/users");  		
+        
+        if(userResource != null) {
+        	 Iterator<Resource> userChildList = userResource.listChildren();
+        	 JsonArrayBuilder userJsonList = Json.createArrayBuilder();
+        	 
+        	 while (userChildList.hasNext()) {
+				Resource childUserResource = (Resource) userChildList.next();
+				
+				ValueMap properties = childUserResource.getValueMap();
+				String firstName = properties.get("firstName", String.class);
+				String lastName = properties.get("lastName", String.class);
+				String email = properties.get("email", String.class);
+				String phone = properties.get("phone", String.class);
+				
+				JsonObjectBuilder userJson = Json.createObjectBuilder();
+				
+				userJson.add("firstName", firstName);
+				userJson.add("lastName", lastName);
+				userJson.add("email", email);
+				userJson.add("phone", phone);
+				userJsonList.add(userJson);
+			}
+        	
+        	 response.getWriter().write(userJsonList.build().toString());
+        }
+		
+		
+	}
+
+	@Override
+	protected void doPost(SlingHttpServletRequest request,SlingHttpServletResponse response)
+			throws ServletException, IOException {
+		
+		ResourceResolver resolver = request.getResourceResolver();
+        Resource userResource = resolver.getResource("/content/users");  
+        
+        String userID = request.getParameter("userID");
+        
+        Map<String, Object > properties = new HashMap();
+        properties.put("firstName", request.getParameter("firstName"));
+        properties.put("lastName", request.getParameter("lastName"));
+        properties.put("email", request.getParameter("email"));
+        properties.put("phone", request.getParameter("phone"));
+        
+        resolver.create(userResource, userID, properties);
+        resolver.commit();
+		response.getWriter().write("User ID successfully Created " + userID);
+	}
+	@Override
+	protected void doPut(SlingHttpServletRequest request,SlingHttpServletResponse response)
+			throws ServletException, IOException {
+		
+        String userID = request.getParameter("userID");
+		
+		ResourceResolver resolver = request.getResourceResolver();
+        Resource userResource = resolver.getResource("/content/users" + userID);  
+        
+        if(userResource != null) {
+        	
+        	ModifiableValueMap mProp = userResource.adaptTo(ModifiableValueMap.class);
+        	
+        	String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String email = request.getParameter("email");
+			String phone = request.getParameter("phone");
+			
+			if(firstName != null) {
+				
+				mProp.put("firstName", firstName);
+			}
+            if(lastName != null) {
+				
+				mProp.put("lastName", lastName);
+			}
+            if(email != null) {
+	
+	            mProp.put("email", email);
+                                  }
+            if(phone != null) {
+	
+	            mProp.put("phone", phone);
+                                   }
+        	resolver.commit();
+        }
+        
+		response.getWriter().write("UserID successfully Updated");
+	} 
+	@Override
+	protected void doDelete(SlingHttpServletRequest request,SlingHttpServletResponse response)
+			throws ServletException, IOException {
+	
+		String userID = request.getParameter("userID");
+		
+		ResourceResolver resolver = request.getResourceResolver();
+        Resource userResource = resolver.getResource("/content/users" + userID);  
+        resolver.delete(userResource);
+        resolver.commit();
+        
+        
+		response.getWriter().write("UserID successfully Deleted " + userID);
+	}
+}

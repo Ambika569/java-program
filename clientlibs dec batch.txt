@@ -1,0 +1,31 @@
+AEM ClientLibs:- 
+
+/apps/newsportal/clientlibs
+
+Step1:- Create a node with the type -->cq:ClientLibraryFolder
+
+1.categories -->String[] --> newsportal.saikumar
+2.allowProxy -->Boolean --> true
+3.dependencies -->String[] --> clientlib-karthik,clientlib-site,karthik.css,karthik.js
+4.embed --> 100kb
+
+css.txt 
+
+#base=css
+Karthik.css
+saikumar.css
+
+css/karthik.css
+css/saikumar.css
+
+js.txt
+
+#base=js
+karthik.js
+saikumar.js
+
+js/karthik.js
+js/saikumar.js
+
+Steps to follow to give permisiions at template level:-
+properties --> Edit template --> pagePolicy --> Categories

@@ -1,0 +1,78 @@
+AEM Technical Stack:- 
+
+JCR
+Apache Sling
+OSGI
+
+1--> JCR:- Java Content Repository
+
+CRXDE :- Content Repository Extreme Development Environment Lite
+
+localhost:4502/crx/de
+
+tree structure / unstructured
+
+console:- URL 
+
+package manager console:-
+http://localhost:4502/crx/packmgr/index.jsp
+
+newsportal:- two categories:
+
+core :- localhost:4502/system/console/bundles
+
+newsportal.core-1.0.0-SNAPSHOT.jar
+
+------
+.zip files 
+newsportal.ui.content-1.0.0-SNAPSHOT.zip
+
+apps
+config
+content
+frontend
+all
+
+mvn clean install -PautoInstallSinglePackage --> 
+mvn clean install -PautoInstallPackage
+mvn clean install -PautoInstallPackagePublish
+
+core folder 
+mvn clean install -PautoInstallBundle
+
+AEM 
+author  --> development side  --> even numbers 
+and publish -- user side  --> odd numbers 
+
+679
+23
+
+---------------------------------------------
+2--> Apache Sling:- jack rabbit 
+
+Request processing 
+
+www/filpkart.com/laptop/hp-book/productversion-id/
+
+https://www.flipkart.com/tablets/~cs-nb53z7h4we/pr?sid=tyy%2Chry&collection-tab-name=Ai%2B%20PulseTab&sort=price_asc&BU=CoreElectronics
+
+---------------------------------------------------
+
+3--> OSGI:- It is a Java Framework {Open Service Gateway Intiative}
+
+Single folder :- core 
+
+
+multiple modules :-
+
+
+parallel development was done. 
+
+java -jar aem-author-p4502.jar -gui
+
+
+Notepad
+
+javac test.java
+
+java test 

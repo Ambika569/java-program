@@ -1,0 +1,83 @@
+HTL:- HTML Templating Language:-  slightly
+
+Expression:- ${}
+
+
+<h1   ------------------ >${properties.name}</h1>
+ 
+JSP :- Java Server Pages
+
+MVC pattern:- Model View Controller
+
+properties :- 
+
+CurrentStyle
+
+--> Variables
+--> Literals
+--> String
+-->Number
+--> Boolean 
+--------------------------------------
+Operators:- 
+Logical Operators:- {&& , || , !}
+Ternary Operators:- condition?truevalue:falsevalue
+Comparison Operators:- {== , != , < , > , >= , <=}
+Grouping paranthesis :- ()
+Relational Operators:- in 
+
+${'a' in 'abcd'} // 
+
+arr = [1,2,3,4,5,6]
+
+${1 in arr}//
+
+
+<h1 class = "karthik">${properties.text}</h1>
+<p class = "karthikeya">${properties.textarea}</p>
+<h1></h1>
+
+HTL Global Objects:- 
+
+properties  - ---> org.apache.sling.api.resource.valueMap
+currentStyle
+pageproperties
+currentpage
+resourcepage
+component
+componentcontext
+currentDesign
+resourceDesign
+designer
+editcontext
+resolver
+resource
+response
+request
+Sling
+contentNode
+WCMNode
+currentSession
+log    ---> org.slf4j.Logger
+out
+reader
+SlyWCmHelper
+xssAPI
+
+
+
+Block Statements:-  data-sly-
+ 
+data-sly-use
+data-sly-include
+data-sly-resource
+data-sly-list
+data-sly-test
+data-sly-repeat
+data-sly-template
+data-sly-call
+data-sly-unwrap
+data-sly-text
+data-sly-attribute
+data-sly-element
+data-sly-set

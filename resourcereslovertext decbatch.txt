@@ -1,0 +1,85 @@
+ResourceResolver:- 
+
+ResourceResolver resolver = request.getResourceResolver();
+
+SystemUser 
+
+http://localhost:4502/crx/explorer/index.jsp
+
+
+http://localhost:4502/useradmin
+
+http://localhost:4502/system/console/configMgr
+
+User Mapper
+
+-------------------------------------------------------------
+@Component(service = TestResolver.class)
+public class TestResolver{
+
+@Reference
+ResourceResolverFactory factory;
+
+public ResourceResolver getResourceResolver(){
+
+ResourceResolver resolver = null;
+
+try{
+
+Map<String,Object> props = new HashMap<>();
+props.put(ResourceResolverFactory.SUBSERVICE, "saikumar");
+resolver = factory.getServiceResourceResolver(props);
+
+}
+catch(LoginException e){
+e.printStackTrace();
+}
+return resolver;
+}
+
+}
+-------------------------------------------
+
+public class Test{
+@Reference
+TestResolver karthik;
+
+
+ResourceResolver resolver = karthik.getResourceResolver();
+
+}
+---------------------------------------------
+
+package com.karthik.newsportal.core.servicesImp;
+
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import java.util.*;
+
+@Component(service = KarthikRes.class)
+public class KarthikRes {
+	
+	@Reference
+	ResourceResolverFactory factory;
+	
+	public ResourceResolver getResourceResolver() {
+		ResourceResolver resolver = null;
+		
+		try {
+			
+			Map<String,Object> prop = new HashMap();
+			prop.put(ResourceResolverFactory.SUBSERVICE, "eHandler");
+			resolver = factory.getServiceResourceResolver(prop);
+		}
+		catch(org.apache.sling.api.resource.LoginException e) {
+			e.printStackTrace();
+			
+		}
+		
+		
+		return resolver;
+	}
+
+}

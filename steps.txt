@@ -1,0 +1,11 @@
+steps component creating
+
+step 1:create compnennt with name and cq:compnent,create cq:aialog,nt:unstruted,html file
+step 2: in cq:dialog create 
+             content
+             items--->text,text area,call like required fiels
+step3: create select node,inside create items give val like opt A
+step 4:create tabs ,inside it create items give tabs name each tabname cintain items node drag n drop the ur craeted node
+step 5:create multifield node inside these field is child node not items
+step 6:create composite multifiels and child node field resource as container for container items is child node
+        add required nodes like text,address 

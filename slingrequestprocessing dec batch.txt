@@ -1,0 +1,35 @@
+Sling Request processing:- 
+
+http://localhost:4502/editor.html/content/newsportal/us/en/decem/page-1.html
+
+Step 1:-
+
+protocol: Http/Https
+Host:localhost
+Port:4502
+ContentPath:/content/newsportal/us/en/decem,/page-1
+Selector:print
+Extension: html
+MEthod: Get/Post
+
+Step2:- Content Path :- 404(Resource Not Found)
+
+Step3:- Get ResourceType
+jcr:content --> cq:pagecontent
+sling:resourceType
+
+Step4:- ScriptLocation
+
+
+newsportal/components/maintemp --> This is a Location 
+
+Script location are store in subfolders --> /apps/ & /libs/
+
+Step5:- 
+
+1.selector + extension
+2.selector
+3.extension
+4.MEthod
+5.Default --{componentname.html}
+6.ParentComponentScriptFile

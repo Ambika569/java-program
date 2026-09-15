@@ -1,0 +1,25 @@
+Content Fragement:-  CF
+
+CF is an asset
+dam:Asset
+/content/dam
+
+json 
+
+HeadLess CMS ? 
+
+www.karthiktextiles.com --> Publish Instance --> 5000 user at a time 
+
+5 publish instances 
+
+1 -- Yes
+2 -- Yes
+3 -- No
+4 -- Yes
+5 -- No 
+
+
+localhost:4502/assets.html/content/dam
+
+1--> HTTP Asset API  -->api/assets/newsportal/cf/vignesh.json
+2--> GraphQL 

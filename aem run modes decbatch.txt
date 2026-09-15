@@ -1,0 +1,82 @@
+AEM RunModes:- 
+
+Standard/Primary/OOTB/ Installation Runmodes 
+
+author
+publish
+samplecontent
+nosamplecontent
+
+java -jar aem-author-p4502.jar -gui
+
+Combinations:-
+
+author,samplecontent
+author,nosamplecontent
+publish,samplecontent
+publish.nosamplecontent
+
+java -jar aem-author-p4502.jar -r samplecontent
+
+Custom Runmodes:- 
+
+dev
+qa
+stage
+preprod
+prod
+uat
+Sit
+live
+
+author,dev
+publish,dev
+
+author,qa
+publish,qa
+
+
+https://devgorest.co.in/v2/public/post
+https://qagorest.co.in/v2/public/post
+https://stagegorest.co.in/v2/public/post
+
+config
+config.author
+config.publish
+config.dev
+config.author.dev
+config.publish.dev
+config.qa
+config.author.qa
+config.publish.qa
+
+---------------------
+dev(author.dev)
+
+config.author.dev
+config.author
+config.dev
+config
+default values
+
+dev(publish.dev)
+
+config.publish.dev
+config.publish
+config.dev
+config
+default values
+
+
+Three different types of approaches:-
+
+-Dsling.run.modes
+
+java -jar aem-author-p4502.jar -Dsling.run.modes=dev
+
+-crx-Quickstart -->conf-->Sling.properties 
+
+sling.run.modes = dev
+
+-r dev
+

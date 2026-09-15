@@ -1,0 +1,156 @@
+HTL:-  UTRLCTRI
+use-Test-Resource-List-Repeat-Template-Call-Include
+
+Block Statements:-
+
+data-sly-use:- 
+
+<div data-sly-use.t = "com.newsportal.core.models.Test">${t.text}</div>
+<div data-sly-use.t1 = "header.js"></div>
+<div data-sly-use.t2 = "header.html"></div>
+
+
+public class Test{
+
+Test t =new Test();//duplicated entire class in t 
+t.add();
+t.i
+}
+------------------------------------------------------------
+data-sly-test:- 
+
+<div data-sly-test = ${properties.status && properties.textfield}>
+<!--<h1>${properties.textfield}</h1> -->
+<h1>${properties.textarea}</h1>
+<h1>${properties.number}</h1></div>
+
+------------------------------------------------------------------------
+
+data-sly-list:- 
+
+karthiklist -->String[] --> jay,abhi,chaithanya,saikumar
+
+<ul data-sly-list.lit = "${properties.karthiklist}">
+<li>${lit}</li></ul>
+
+output:- 
+<ul>
+<li>jay</li>
+<li>abhi</li>
+<li>chaithanya</li>
+<li>saikumar</li>
+</ul>
+
+data-sly-repeat:-  karthiklist -->String[] --> jay,abhi,chaithanya,saikumar
+
+<ul data-sly-repeat = "${properties.karthiklist}">
+<li>${items}</li></ul>
+
+output:- 
+<ul><li>jay</li></ul>
+<ul><li>abhi</li></ul>
+<ul><li>chaithanya</li></ul>
+<ul><li>saikumar</li></ul>
+---------------------------------------------------------------------------------
+
+data-sly-resource:- 
+
+<div data-sly-resource = 
+"${'karthik' @resourceType = 'newsportal/components/button'}">
+
+
+<h1>${properties.text}</h1>
+<div data-sly-resource= "${}"></div>
+-----------------------------------------------------------------------------
+
+data-sly-include:- 
+
+<div data-sly-include = "karthik.html"></div>
+-----------------------------------------------------------------------------
+
+data-sly-template & data-sly-call:- 
+
+Static template:- 
+
+<div data-sly-template.writerInfo>
+<h1>Karthik</h1>
+<h3>Hii good afternoon people......</h3>
+</div>
+
+<div data-sly-call = "${writerInfo}"></div>
+
+Dynamic Template:- 
+
+<div data-sly-template.writerInfo = "${@Firstname,Lastname, email}">
+<h1>${Firstname}</h1>
+<h2>${Lastname}</h2>
+<h4>${email}</h4>
+</div>
+
+<div data-sly-call = 
+"${writerInfo@Firstname = 'Karthik' , Lastname ='Goud' , email = '123@gmail.com' }">
+</div>
+<div data-sly-call = 
+"${writerInfo@Firstname = 'Sai' , Lastname ='Kumar' , email = '12345@gmail.com' }">
+</div>
+<div data-sly-call = 
+"${writerInfo@Firstname = ${properties.text} , Lastname ='Goud' , email = '123@gmail.com' }">
+</div>
+
+
+<div data-sly-use.t2="karthik.html"></div>
+<div data-sly-call = "${t2.writerInfo @}"></div>
+-------------------------------------------------------------------------------
+data-sly-element:- 
+
+<h1 data-sly-element= "${properties.titleType}">${properties.title}</h1>
+---------------------------------------------------------------------------------
+data-sly-text:- 
+<div data-sly-text = "${properties.jcr:description}">Please enter the valid description</div>
+-----------------------------------------------------------------------------------
+
+data-sly-attribute:- 
+<div title = "karthik title" data-sly-attribute.title = "${properties.jcr:title}">
+-----------------------------------------------------------------------------------
+
+data-sly-set:- 
+
+<div data-sly-set.var1 = "${properties.text}"></div>
+<h1>${var1}</h1>
+
+----------------------------------------------------------------------------------------
+data-sly-unwrap:- Removes the Host Element.
+
+
+@format:-  </h3>${YYYY/MM/DD @format = mydate}</h3>
+
+YYYY/MM/DD
+DD/MM/YYYY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+data-sly-include
+data-sly-resource
+data-sly-list
+data-sly-test
+data-sly-repeat
+data-sly-template
+data-sly-call
+data-sly-unwrap
+data-sly-text
+data-sly-attribute
+data-sly-element
+data-sly-set
